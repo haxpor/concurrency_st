@@ -3,7 +3,7 @@ Demo application to demonstrate that function call will act as compiler barrier 
 link it with program with both MSVC and GCC.
 
 Supports both MSVC, and GCC via batch file, and bash script file respectively.
-Inspired from https://docs.microsoft.com/en-us/cpp/build/exporting-from-a-dll-using-def-files?view=vs-2019
+Inspired from https://preshing.com/20120625/memory-ordering-at-compile-time/
 
 # How to build
 
