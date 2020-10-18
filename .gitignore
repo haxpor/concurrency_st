@@ -1,0 +1,15 @@
+*.swp
+*.swo
+*.o
+*.ilk
+*.exe
+*.out
+*.so
+*.dll
+*.lib
+*.exp
+*.obj
+*.so
+*.s
+*.asm
+*.pdb
