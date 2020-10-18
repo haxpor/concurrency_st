@@ -14,12 +14,11 @@ if not exist %outputDir% (
 )
 
 REM build .dll
-REM No generation of .pdb file, but debugging info will be generated in .obj file
-cl.exe /EHsc /Z7 /DEBUG:NONE /I. /O2 /LD /DCOMPILING_LIB /Fo:%outputDir%/lib.obj lib.cpp /link /DLL /OUT:%outputDir%/lib.dll /IMPLIB:%outputDir%/lib.lib
+cl.exe /EHsc /Z7 /I. /O2 /LD /DCOMPILING_LIB /Fo:%outputDir%/lib.obj lib.cpp /link /DLL /OUT:%outputDir%/lib.dll /IMPLIB:%outputDir%/lib.lib
 REM build main.cpp
 REM link with lib.lib (import library for lib.dll)
 REM and also generate assembly output (included source and assembly code)
-cl.exe /EHsc /Z7 /DEBUG:NONE /I. /O2 /FAcs /Fa%outputDir%/main.asm main.cpp /Fo:%outputDir%/main.obj /Fe:%outputDir%/main.exe %outputDir%\lib.lib 
+cl.exe /EHsc /Z7 /I. /O2 /FAcs /Fa%outputDir%/main.asm main.cpp /Fo:%outputDir%/main.obj /Fe:%outputDir%/main.exe %outputDir%\lib.lib 
 
 if %ERRORLEVEL% GEQ 1 (
     EXIT /B %ERRORLEVEL%
