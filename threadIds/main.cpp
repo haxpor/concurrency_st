@@ -7,6 +7,7 @@
 #include <iostream>
 #include <thread>
 #include <atomic>
+#include <array>
 
 static std::atomic_flag sPrintLock = ATOMIC_FLAG_INIT;
 
@@ -28,11 +29,18 @@ void threadFunc()
 
 int main()
 {
-    std::thread t1(threadFunc);
-    std::thread t2(threadFunc);
+    constexpr const int kThreadCount = 5;
+    std::array<std::thread, kThreadCount> threads;
 
-    t1.join();
-    t2.join();
+    for (int i=0; i<kThreadCount; ++i)
+    {
+        threads[i] = std::thread(threadFunc);
+    }
+
+    for (int i=0; i<kThreadCount; ++i)
+    {
+        threads[i].join();
+    }
 
     return 0;
 }
